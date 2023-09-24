@@ -15,11 +15,11 @@ use App\Http\Controllers\PerulanganController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+//Menu Perulangan
 Route::get('/', [PerulanganController::class, 'index']);
 Route::post('/cekBilangan', [PerulanganController::class, 'cek']);
+
+//Menu Cek Ongkir
 Route::get('/cekOngkir', [CekOngkirController::class, 'index']);
 Route::get('/cities/{province_id}', [CekOngkirController::class, 'getCities']);
 Route::post('/ongkir', [CekOngkirController::class, 'checkOngkir']);

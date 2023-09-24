@@ -1,28 +1,4 @@
 <!doctype html>
-<style>
-    .topnav {
-        overflow: hidden;
-    }
-
-    .topnav a {
-        float: left;
-        color: #fcd9ae;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    .topnav a.active {
-        background-color: #04AA6D;
-        color: white;
-    }   
-</style>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -31,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.3.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
@@ -147,6 +124,7 @@
         //select kota asal
         $('#provinsiAsal').on('change', function () {
             let provinceId = $(this).val();
+
             if (provinceId) {
                 jQuery.ajax({
                     url: '/cities/'+provinceId,
@@ -168,6 +146,7 @@
         //select kota tujuan
         $('#provinsiTujuan').on('change', function () {
             let provinceId = $(this).val();
+
             if (provinceId) {
                 jQuery.ajax({
                     url: '/cities/'+provinceId,
@@ -187,7 +166,6 @@
         });
 
         //check ongkir
-        let isProcessing = false;
         $('#cekOngkir').click(function (e) {
             e.preventDefault();
 
@@ -209,19 +187,15 @@
                 dataType: "JSON",
                 type: "POST",
                 success: function (response) {
-                    isProcessing = false;
                     if (response) {
                         $('#ongkir').empty();
                         $('.ongkir').addClass('d-block');
                         $.each(response[0]['costs'], function (key, value) {
                             $('#ongkir').append('<li class="list-group-item">'+response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</li>')
                         });
-
                     }
                 }
             });
-
         });
-
     });
 </script>

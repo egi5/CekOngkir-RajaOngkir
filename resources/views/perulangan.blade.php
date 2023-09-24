@@ -1,28 +1,4 @@
 <!doctype html>
-<style>
-    .topnav {
-        overflow: hidden;
-    }
-
-    .topnav a {
-        float: left;
-        color: #fcd9ae;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    .topnav a.active {
-        background-color: #04AA6D;
-        color: white;
-    }   
-</style>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -30,6 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.3.2/dist/select2-bootstrap4.min.css" rel="stylesheet" />
@@ -44,6 +21,7 @@
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/cekOngkir">Cek Ongkir</a></li>
     </ul>
 </div>
+
 <div class="container-fluid mt-4">
     <div class="row">
         <h5>Rule :</h5>
@@ -62,7 +40,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <h4>Jumlah Perulangan</h4>
-                        <input type="numer" class="form-control" id="bilangan" placeholder="Masukan Bilangan">
+                        <input type="number" class="form-control" id="bilangan" placeholder="Masukan Bilangan">
                     </div>
                     <button class="btn btn-md btn-primary btn-block btn-check" id="run">RUN</button>
                 </div>
@@ -107,8 +85,6 @@
                     $('#hasil').html(hasil);
                 }
             });
-
         });
-
     });
 </script>
